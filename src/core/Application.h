@@ -15,6 +15,8 @@ class Application {
 public:
 	Application();
 	virtual ~Application();
+
+	int main(int argc, char *argv[]);
 };
 
 } /* namespace core */

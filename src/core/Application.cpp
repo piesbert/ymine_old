@@ -5,23 +5,29 @@
  *      Author: piesbert
  */
 
-#include "Application.h"
+#include "core/Application.h"
+#include "config/Config.h"
 
 namespace ymine {
 namespace core {
 
 Application::Application() {
-	// TODO Auto-generated constructor stub
-
 }
 
 Application::~Application() {
-	// TODO Auto-generated destructor stub
+}
+
+int Application::main(int argc, char *argv[]) {
+	return 0;
 }
 
 } /* namespace core */
 } /* namespace ymine */
 
 int main(int argc, char *argv[]) {
-	return 0;
+	ymine::core::Application application;
+
+	ymine::config::Config::instance().init(new ymine::config::ConfigImpl);
+
+	return application.main(argc, argv);
 }
