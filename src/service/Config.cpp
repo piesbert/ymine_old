@@ -16,11 +16,6 @@ Config::Config() {
 Config::~Config() {
 }
 
-Config &Config::instance() {
-	static Config instance;
-	return instance;
-}
-
 int Config::windowWidth() const {
 	return m_impl->windowWidth();
 }

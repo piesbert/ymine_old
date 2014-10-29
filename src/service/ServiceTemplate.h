@@ -11,13 +11,17 @@
 namespace ymine {
 namespace service {
 
-template<class T>
+template<class S, class T>
 class ServiceTemplate : public T {
 public:
-	ServiceTemplate() : m_impl(nullptr) {}
 	virtual ~ServiceTemplate() {}
 
-	void init(T const *impl) {
+	static S &instance() {
+		static S singleInstance;
+		return singleInstance;
+	}
+
+	virtual void init(T const *impl) final {
 		if (nullptr == m_impl) {
 			m_impl = impl;
 		}
@@ -25,6 +29,11 @@ public:
 
 protected:
 	T const *m_impl;
+	inline explicit ServiceTemplate() : m_impl(nullptr) {}
+
+private:
+	ServiceTemplate(const ServiceTemplate&) = delete;
+	ServiceTemplate& operator=(const ServiceTemplate&) = delete;
 };
 
 } /* namespace service */

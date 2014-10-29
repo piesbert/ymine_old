@@ -14,19 +14,13 @@
 namespace ymine {
 namespace service {
 
-class Config : public service::ServiceTemplate<interface::IConfig> {
+class Config : public service::ServiceTemplate<Config, interface::IConfig> {
 public:
-	static Config &instance();
+	Config();
 	virtual ~Config();
 
 	int windowWidth() const;
     int windowHeight() const;
-
-    Config(Config const&) = delete;
-    void operator=(Config const&) = delete;
-
-private:
-	Config();
 };
 
 } /* namespace config */
