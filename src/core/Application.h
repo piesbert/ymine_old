@@ -8,6 +8,8 @@
 #ifndef SRC_CORE_APPLICATION_H_
 #define SRC_CORE_APPLICATION_H_
 
+#include "interface/IConfig.h"
+
 namespace ymine {
 namespace core {
 
@@ -17,6 +19,11 @@ public:
 	virtual ~Application();
 
 	int main(int argc, char *argv[]);
+
+private:
+	std::unique_ptr<interface::IConfig> m_config;
+
+	void initServices();
 };
 
 } /* namespace core */

@@ -6,12 +6,16 @@
  */
 
 #include "core/Application.h"
-#include "config/Config.h"
+
+#include "service/ConfigImpl.h"
+#include "service/Config.h"
 
 namespace ymine {
 namespace core {
 
-Application::Application() {
+Application::Application()
+: m_config (new service::ConfigImpl()) {
+	initServices();
 }
 
 Application::~Application() {
@@ -21,13 +25,14 @@ int Application::main(int argc, char *argv[]) {
 	return 0;
 }
 
+void Application::initServices() {
+	service::Config::instance().init(m_config.get());
+}
+
 } /* namespace core */
 } /* namespace ymine */
 
 int main(int argc, char *argv[]) {
 	ymine::core::Application application;
-
-	ymine::config::Config::instance().init(new ymine::config::ConfigImpl);
-
 	return application.main(argc, argv);
 }

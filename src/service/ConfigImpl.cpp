@@ -5,10 +5,10 @@
  *      Author: piesbert
  */
 
-#include "ConfigImpl.h"
+#include "service/ConfigImpl.h"
 
 namespace ymine {
-namespace config {
+namespace service {
 
 ConfigImpl::ConfigImpl() :
 	m_width(800),

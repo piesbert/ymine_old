@@ -5,15 +5,15 @@
  *      Author: piesbert
  */
 
-#ifndef SRC_CONFIG_CONFIGIMPL_H_
-#define SRC_CONFIG_CONFIGIMPL_H_
+#ifndef SRC_SERVICE_CONFIGIMPL_H_
+#define SRC_SERVICE_CONFIGIMPL_H_
 
 #include "interface/IConfig.h"
 
 namespace ymine {
-namespace config {
+namespace service {
 
-class ConfigImpl: public interface::IConfig {
+class ConfigImpl : public interface::IConfig {
 public:
 	ConfigImpl();
 	virtual ~ConfigImpl();
@@ -29,4 +29,4 @@ private:
 } /* namespace config */
 } /* namespace ymine */
 
-#endif /* SRC_CONFIG_CONFIGIMPL_H_ */
+#endif /* SRC_SERVICE_CONFIGIMPL_H_ */

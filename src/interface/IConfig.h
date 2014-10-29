@@ -8,6 +8,8 @@
 #ifndef SRC_INTERFACE_ICONFIG_H_
 #define SRC_INTERFACE_ICONFIG_H_
 
+#include <memory>
+
 namespace ymine {
 namespace interface {
 

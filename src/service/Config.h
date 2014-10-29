@@ -5,20 +5,19 @@
  *      Author: piesbert
  */
 
-#ifndef SRC_CONFIG_CONFIG_H_
-#define SRC_CONFIG_CONFIG_H_
+#ifndef SRC_SERVICE_CONFIG_H_
+#define SRC_SERVICE_CONFIG_H_
 
-#include "config/ConfigImpl.h"
+#include "service/ServiceTemplate.h"
+#include "interface/IConfig.h"
 
 namespace ymine {
-namespace config {
+namespace service {
 
-class Config {
+class Config : public service::ServiceTemplate<interface::IConfig> {
 public:
 	static Config &instance();
 	virtual ~Config();
-
-	void init(interface::IConfig const *config);
 
 	int windowWidth() const;
     int windowHeight() const;
@@ -28,11 +27,9 @@ public:
 
 private:
 	Config();
-
-	interface::IConfig const *m_config;
 };
 
 } /* namespace config */
 } /* namespace ymine */
 
-#endif /* SRC_CONFIG_CONFIG_H_ */
+#endif /* SRC_SERVICE_CONFIG_H_ */

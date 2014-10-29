@@ -5,12 +5,12 @@
  *      Author: piesbert
  */
 
-#include "Config.h"
+#include "service/Config.h"
 
 namespace ymine {
-namespace config {
+namespace service {
 
-Config::Config() : m_config(nullptr) {
+Config::Config() {
 }
 
 Config::~Config() {
@@ -21,15 +21,12 @@ Config &Config::instance() {
 	return instance;
 }
 
-void Config::init(interface::IConfig const *config) {
-	m_config = config;
+int Config::windowWidth() const {
+	return m_impl->windowWidth();
 }
 
-int Config::windowWidth() const {
-	return m_config->windowWidth();
-}
 int Config::windowHeight() const {
-	return m_config->windowHeight();
+	return m_impl->windowHeight();
 }
 
 } /* namespace config */
