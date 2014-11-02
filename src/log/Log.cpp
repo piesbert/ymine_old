@@ -56,17 +56,17 @@ Log &Log::instance() {
 Log &operator<<(Log &log, const Log::EType type) {
     switch (type) {
     case(Log::EType::ERR) : {
-        log.m_file << "[ERR] ";
+        log.m_file << "ERR ";
         log.m_errorCounter++;
         break;
     }
     case(Log::EType::WRN) : {
-        log.m_file << "[WRN] ";
+        log.m_file << "WRN ";
         log.m_warningCounter++;
         break;
     }
     case(Log::EType::INF) : {
-        log.m_file << "[INF] ";
+        log.m_file << "INF ";
         break;
     }
     case(Log::EType::END) : {
@@ -95,6 +95,8 @@ Log &operator<<(Log &log, const int integer) {
     else {
         log.m_file << integer;
     }
+
+    log.m_intModifier = Log::EIntModifier::INT;
 
     return log;
 }
