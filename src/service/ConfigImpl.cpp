@@ -12,7 +12,8 @@ namespace service {
 
 ConfigImpl::ConfigImpl() :
 	m_width(800),
-	m_height(600) {
+	m_height(600),
+	m_logFile("ymine.log") {
 }
 
 ConfigImpl::~ConfigImpl() {
@@ -24,6 +25,10 @@ int ConfigImpl::windowWidth() const {
 
 int ConfigImpl::windowHeight() const {
 	return m_height;
+}
+
+const std::string &ConfigImpl::logFile() const {
+    return m_logFile;
 }
 
 } /* namespace config */

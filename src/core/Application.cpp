@@ -12,6 +12,8 @@
 #include "service/SdlImpl.h"
 #include "service/Sdl.h"
 
+#include "log/Log.h"
+
 namespace ymine {
 namespace core {
 

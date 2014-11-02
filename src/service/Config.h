@@ -16,11 +16,14 @@ namespace service {
 
 class Config : public service::ServiceTemplate<Config, interface::IConfig> {
 public:
-	//Config();
+	Config();
 	virtual ~Config();
 
 	int windowWidth() const;
     int windowHeight() const;
+
+    const std::string &logFile() const;
+
 };
 
 } /* namespace config */

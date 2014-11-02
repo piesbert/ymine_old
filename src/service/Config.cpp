@@ -10,8 +10,8 @@
 namespace ymine {
 namespace service {
 
-//Config::Config() {
-//}
+Config::Config() {
+}
 
 Config::~Config() {
 }
@@ -22,6 +22,10 @@ int Config::windowWidth() const {
 
 int Config::windowHeight() const {
 	return m_impl->windowHeight();
+}
+
+const std::string &Config::logFile() const {
+    return m_impl->logFile();
 }
 
 } /* namespace config */
