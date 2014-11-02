@@ -10,8 +10,8 @@
 namespace ymine {
 namespace service {
 
-Config::Config() {
-}
+//Config::Config() {
+//}
 
 Config::~Config() {
 }

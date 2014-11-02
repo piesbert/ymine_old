@@ -21,7 +21,7 @@ public:
 		return singleInstance;
 	}
 
-	virtual void init(T const *impl) final {
+	virtual void initServiceImpl(T const *impl) final {
 		if (nullptr == m_impl) {
 			m_impl = impl;
 		}

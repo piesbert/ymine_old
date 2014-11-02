@@ -9,6 +9,7 @@
 #define SRC_CORE_APPLICATION_H_
 
 #include "interface/IConfig.h"
+#include "interface/ISdl.h"
 
 namespace ymine {
 namespace core {
@@ -22,6 +23,7 @@ public:
 
 private:
 	std::unique_ptr<interface::IConfig> m_config;
+	std::unique_ptr<interface::ISdl> m_sdl;
 
 	void initServices();
 };

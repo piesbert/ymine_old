@@ -9,12 +9,15 @@
 
 #include "service/ConfigImpl.h"
 #include "service/Config.h"
+#include "service/SdlImpl.h"
+#include "service/Sdl.h"
 
 namespace ymine {
 namespace core {
 
 Application::Application()
-: m_config (new service::ConfigImpl()) {
+: m_config (new service::ConfigImpl()),
+  m_sdl (new service::SdlImpl) {
 	initServices();
 }
 
@@ -26,7 +29,8 @@ int Application::main(int argc, char *argv[]) {
 }
 
 void Application::initServices() {
-	service::Config::instance().init(m_config.get());
+	service::Config::instance().initServiceImpl(m_config.get());
+	service::Sdl::instance().initServiceImpl(m_sdl.get());
 }
 
 } /* namespace core */
