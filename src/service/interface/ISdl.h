@@ -20,12 +20,13 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
  */
 
-#ifndef SRC_INTERFACE_ISDL_H_
-#define SRC_INTERFACE_ISDL_H_
+#ifndef SRC_SERVICE_INTERFACE_ISDL_H_
+#define SRC_SERVICE_INTERFACE_ISDL_H_
 
 #include <SDL2/SDL.h>
 
 namespace ymine {
+namespace service {
 namespace interface {
 
 struct ISdl {
@@ -43,6 +44,7 @@ struct ISdl {
 };
 
 } /* namespace interface */
+} /* namespace service */
 } /* namespace ymine */
 
-#endif /* SRC_INTERFACE_ISDL_H_ */
+#endif /* SRC_SERVICE_INTERFACE_ISDL_H_ */

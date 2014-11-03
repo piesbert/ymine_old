@@ -23,8 +23,8 @@
 #ifndef SRC_CORE_APPLICATION_H_
 #define SRC_CORE_APPLICATION_H_
 
-#include "interface/IConfig.h"
-#include "interface/ISdl.h"
+#include "service/interface/IConfig.h"
+#include "service/interface/ISdl.h"
 
 #include <memory>
 
@@ -39,8 +39,8 @@ public:
 	int main(int argc, char *argv[]);
 
 private:
-	std::unique_ptr<interface::IConfig> m_config;
-	std::unique_ptr<interface::ISdl> m_sdl;
+	std::unique_ptr<service::interface::IConfig> m_config;
+	std::unique_ptr<service::interface::ISdl> m_sdl;
 
 	void initServices();
 };

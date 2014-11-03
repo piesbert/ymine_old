@@ -23,7 +23,7 @@
 #ifndef SRC_SERVICE_CONFIGIMPL_H_
 #define SRC_SERVICE_CONFIGIMPL_H_
 
-#include "interface/IConfig.h"
+#include "service/interface/IConfig.h"
 
 namespace ymine {
 namespace service {

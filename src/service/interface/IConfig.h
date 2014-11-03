@@ -20,12 +20,13 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef SRC_INTERFACE_ICONFIG_H_
-#define SRC_INTERFACE_ICONFIG_H_
+#ifndef SRC_SERVICE_INTERFACE_ICONFIG_H_
+#define SRC_SERVICE_INTERFACE_ICONFIG_H_
 
 #include <string>
 
 namespace ymine {
+namespace service {
 namespace interface {
 
 struct IConfig {
@@ -38,6 +39,7 @@ struct IConfig {
 };
 
 } /* namespace interface */
+} /* namespace service */
 } /* namespace ymine */
 
-#endif /* SRC_INTERFACE_ICONFIG_H_ */
+#endif /* SRC_SERVICE_INTERFACE_ICONFIG_H_ */

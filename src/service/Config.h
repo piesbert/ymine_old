@@ -24,21 +24,20 @@
 #define SRC_SERVICE_CONFIG_H_
 
 #include "service/ServiceTemplate.h"
-#include "interface/IConfig.h"
+#include "service/interface/IConfig.h"
 
 namespace ymine {
 namespace service {
 
-class Config : public service::ServiceTemplate<Config, interface::IConfig> {
+class Config : public service::ServiceTemplate<Config, service::interface::IConfig> {
 public:
-	Config();
-	virtual ~Config();
+    Config();
+    virtual ~Config();
 
-	int windowWidth() const;
+    int windowWidth() const;
     int windowHeight() const;
 
     const std::string &logFile() const;
-
 };
 
 } /* namespace config */

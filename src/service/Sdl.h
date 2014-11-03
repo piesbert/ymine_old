@@ -24,12 +24,12 @@
 #define SRC_SERVICE_SDL_H_
 
 #include "service/ServiceTemplate.h"
-#include "interface/ISdl.h"
+#include "service/interface/ISdl.h"
 
 namespace ymine {
 namespace service {
 
-class Sdl: public service::ServiceTemplate<Sdl, interface::ISdl> {
+class Sdl: public service::ServiceTemplate<Sdl, service::interface::ISdl> {
 public:
     Sdl();
     virtual ~Sdl();

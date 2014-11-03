@@ -53,7 +53,9 @@ void Application::initServices() {
 } /* namespace core */
 } /* namespace ymine */
 
+using namespace ymine;
+
 int main(int argc, char *argv[]) {
-	ymine::core::Application application;
+	core::Application application;
 	return application.main(argc, argv);
 }
