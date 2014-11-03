@@ -1,6 +1,6 @@
-/* File:       Application.cpp
+/* File:       Main.cpp
  * Project:    ymine
- * Created on: Oct 29, 2014 01:00:00 AM
+ * Created on: Nov 3, 2014 6:18:37 PM
  * Author:     piesbert
  *
  * Copyright (C) 2014 Sebastian Szymak
@@ -17,38 +17,17 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
  */
 
-#include "core/Application.h"
+#include <gmock/gmock.h>
 
-#include "service/ConfigImpl.h"
-#include "service/Config.h"
-#include "service/SdlImpl.h"
-#include "service/Sdl.h"
-
-#include "log/Log.h"
-
-namespace ymine {
-namespace core {
-
-Application::Application()
-: m_config (new service::ConfigImpl()),
-  m_sdl (new service::SdlImpl) {
-	initServices();
+int main(int argc, char *argv[]) {
+        ::testing::InitGoogleMock(&argc, argv);
+        return RUN_ALL_TESTS();
 }
 
-Application::~Application() {
-}
 
-int Application::main(int argc, char *argv[]) {
-	return 0;
-}
 
-void Application::initServices() {
-	service::Config::instance().initServiceImpl(m_config.get());
-	service::Sdl::instance().initServiceImpl(m_sdl.get());
-}
 
-} /* namespace core */
-} /* namespace ymine */
+
