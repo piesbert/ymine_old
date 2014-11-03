@@ -1,6 +1,6 @@
-/* File:       ConfigImpl.cpp
+/* File:       IWindow.h
  * Project:    ymine
- * Created on: Oct 29, 2014 01:00:00 AM
+ * Created on: Nov 3, 2014 8:57:06 PM
  * Author:     piesbert
  *
  * Copyright (C) 2014 Sebastian Szymak
@@ -17,39 +17,24 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
  */
 
-#include "service/ConfigImpl.h"
+#ifndef SRC_OPENGL_INTERFACE_IWINDOW_H_
+#define SRC_OPENGL_INTERFACE_IWINDOW_H_
 
 namespace ymine {
-namespace service {
+namespace opengl {
+namespace interface {
 
-ConfigImpl::ConfigImpl() :
-	m_width(800),
-	m_height(600),
-	m_windowTitle("yMine"),
-	m_logFile("ymine.log") {
-}
+struct IWindow {
+    virtual ~IWindow() {}
 
-ConfigImpl::~ConfigImpl() {
-}
+    virtual void draw() = 0;
+};
 
-int ConfigImpl::windowWidth() const {
-	return m_width;
-}
-
-int ConfigImpl::windowHeight() const {
-	return m_height;
-}
-
-const std::string &ConfigImpl::windowTitle() const {
-    return m_windowTitle;
-}
-
-const std::string &ConfigImpl::logFile() const {
-    return m_logFile;
-}
-
-} /* namespace config */
+} /* namespace interface */
+} /* namespace opengl */
 } /* namespace ymine */
+
+#endif /* SRC_OPENGL_INTERFACE_IWINDOW_H_ */

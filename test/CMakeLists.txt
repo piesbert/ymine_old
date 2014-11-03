@@ -11,9 +11,14 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lpthread")
 
 file(GLOB_RECURSE SRC_FILES_CORE ${ymine_SOURCE_DIR}/src/core/*.cpp)
 file(GLOB_RECURSE SRC_FILES_SERVICE ${ymine_SOURCE_DIR}/src/service/*.cpp)
-file(GLOB_RECURSE SRC_FILES_LOG ${ymine_SOURCE_DIR}/src/service/*.cpp)
+file(GLOB_RECURSE SRC_FILES_LOG ${ymine_SOURCE_DIR}/src/log/*.cpp)
+file(GLOB_RECURSE SRC_FILES_OPENGL ${ymine_SOURCE_DIR}/src/opengl/*.cpp)
 
 file(GLOB_RECURSE SRC_FILES ${ymine_SOURCE_DIR}/test/*.cpp)
 
-add_executable(ymine_test ${SRC_FILES} ${SRC_FILES_CORE} ${SRC_FILES_SERVICE} ${SRC_FILES_LOG})
+add_executable(ymine_test ${SRC_FILES}
+	${SRC_FILES_CORE}
+	${SRC_FILES_SERVICE}
+	${SRC_FILES_LOG}
+	${SRC_FILES_OPENGL})
 target_link_libraries(ymine_test "${ymine_SOURCE_DIR}/lib/libgmock.a")

@@ -1,6 +1,6 @@
-/* File:       ConfigImpl.cpp
+/* File:       Window.h
  * Project:    ymine
- * Created on: Oct 29, 2014 01:00:00 AM
+ * Created on: Nov 3, 2014 8:58:52 PM
  * Author:     piesbert
  *
  * Copyright (C) 2014 Sebastian Szymak
@@ -17,39 +17,43 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
  */
 
-#include "service/ConfigImpl.h"
+#ifndef SRC_OPENGL_WINDOW_H_
+#define SRC_OPENGL_WINDOW_H_
+
+#include "opengl/interface/IWindow.h"
+
+#include "service/interface/ISdl.h"
+#include "service/interface/IConfig.h"
 
 namespace ymine {
-namespace service {
+namespace opengl {
 
-ConfigImpl::ConfigImpl() :
-	m_width(800),
-	m_height(600),
-	m_windowTitle("yMine"),
-	m_logFile("ymine.log") {
-}
+class Window : public opengl::interface::IWindow {
+public:
+    Window();
+    virtual ~Window();
 
-ConfigImpl::~ConfigImpl() {
-}
+    void draw();
 
-int ConfigImpl::windowWidth() const {
-	return m_width;
-}
+private:
+    service::interface::ISdl &m_sdl;
+    service::interface::IConfig &m_config;
 
-int ConfigImpl::windowHeight() const {
-	return m_height;
-}
+    SDL_Window *m_window;
+    SDL_GLContext m_glContext;
 
-const std::string &ConfigImpl::windowTitle() const {
-    return m_windowTitle;
-}
+    int m_red;
+    int m_green;
+    int m_blue;
 
-const std::string &ConfigImpl::logFile() const {
-    return m_logFile;
-}
+    void setGlAttributes();
+    void checkColors();
+};
 
-} /* namespace config */
+} /* namespace opengl */
 } /* namespace ymine */
+
+#endif /* SRC_OPENGL_WINDOW_H_ */

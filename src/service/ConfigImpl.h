@@ -35,12 +35,14 @@ public:
 
 	int windowWidth() const;
 	int windowHeight() const;
+	const std::string &windowTitle() const;
 
 	const std::string &logFile() const;
 
 private:
 	int m_width;
 	int m_height;
+	std::string m_windowTitle;
 
 	std::string m_logFile;
 };

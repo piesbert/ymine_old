@@ -27,6 +27,8 @@
 #include "service/SdlImpl.h"
 #include "service/Sdl.h"
 
+#include "opengl/Window.h"
+
 #include "log/Log.h"
 
 namespace ymine {

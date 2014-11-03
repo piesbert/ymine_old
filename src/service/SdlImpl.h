@@ -42,6 +42,13 @@ public:
     SDL_GLContext glCreateContext(SDL_Window* window) const;
     void glDeleteContext(SDL_GLContext context) const;
     void glSwapWindow(SDL_Window* window) const;
+
+    int glSetAttribute(SDL_GLattr attr, int value) const;
+    int glGetAttribute(SDL_GLattr attr, int* value) const;
+
+    int glSetSwapInterval(int interval) const;
+
+    const char* getError() const;
 };
 
 } /* namespace service */

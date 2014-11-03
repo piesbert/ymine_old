@@ -36,6 +36,7 @@ public:
 
     int windowWidth() const;
     int windowHeight() const;
+    const std::string &windowTitle() const;
 
     const std::string &logFile() const;
 };

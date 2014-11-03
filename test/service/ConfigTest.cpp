@@ -33,6 +33,8 @@ TEST(Config, DefaultValues) {
     EXPECT_EQ(800, Config::instance().windowWidth());
     EXPECT_EQ(600, Config::instance().windowHeight());
 
+    EXPECT_EQ("yMine", Config::instance().windowTitle());
+
     EXPECT_EQ("ymine.log", Config::instance().logFile());
 }
 

@@ -41,6 +41,13 @@ struct ISdl {
     virtual SDL_GLContext glCreateContext(SDL_Window* window) const = 0;
     virtual void glDeleteContext(SDL_GLContext context) const = 0;
     virtual void glSwapWindow(SDL_Window* window) const = 0;
+
+    virtual int glSetAttribute(SDL_GLattr attr, int value) const = 0;
+    virtual int glGetAttribute(SDL_GLattr attr, int* value) const = 0;
+
+    virtual int glSetSwapInterval(int interval) const = 0;
+
+    virtual const char* getError() const = 0;
 };
 
 } /* namespace interface */

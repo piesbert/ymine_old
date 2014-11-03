@@ -39,6 +39,10 @@ int Config::windowHeight() const {
 	return m_impl->windowHeight();
 }
 
+const std::string &Config::windowTitle() const {
+    return m_impl->windowTitle();
+}
+
 const std::string &Config::logFile() const {
     return m_impl->logFile();
 }

@@ -34,6 +34,7 @@ struct IConfig {
 
 	virtual int windowWidth() const = 0;
 	virtual int windowHeight() const = 0;
+	virtual const std::string &windowTitle() const = 0;
 
 	virtual const std::string &logFile() const = 0;
 };

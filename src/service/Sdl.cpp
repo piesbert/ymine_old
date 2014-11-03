@@ -59,5 +59,21 @@ void Sdl::glSwapWindow(SDL_Window* window) const {
     m_impl->glSwapWindow(window);
 }
 
+int Sdl::glSetAttribute(SDL_GLattr attr, int value) const {
+    return m_impl->glSetAttribute(attr, value);
+}
+
+int Sdl::glGetAttribute(SDL_GLattr attr, int* value) const {
+    return m_impl->glGetAttribute(attr, value);
+}
+
+int Sdl::glSetSwapInterval(int interval) const {
+    return m_impl->glSetSwapInterval(interval);
+}
+
+const char *Sdl::getError() const {
+    return m_impl->getError();
+}
+
 } /* namespace service */
 } /* namespace ymine */
