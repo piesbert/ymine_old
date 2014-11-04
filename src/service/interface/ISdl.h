@@ -23,6 +23,10 @@
 #ifndef SRC_SERVICE_INTERFACE_ISDL_H_
 #define SRC_SERVICE_INTERFACE_ISDL_H_
 
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+
 #include <SDL2/SDL.h>
 
 namespace ymine {

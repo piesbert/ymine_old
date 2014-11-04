@@ -63,6 +63,9 @@ Window::Window()
     /* VSync on.
      */
     m_sdl.glSetSwapInterval(1);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 }
 
 Window::~Window() {
@@ -72,10 +75,12 @@ Window::~Window() {
     if (nullptr != m_window) {
         m_sdl.destroyWindow(m_window);
     }
+
+    m_sdl.quit();
 }
 
 void Window::draw() {
-
+    m_sdl.glSwapWindow(m_window);
 }
 
 void Window::setGlAttributes() {
