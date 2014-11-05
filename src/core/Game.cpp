@@ -1,6 +1,6 @@
-/* File:       Application.h
+/* File:       Game.cpp
  * Project:    ymine
- * Created on: Oct 29, 2014 01:00:00 AM
+ * Created on: Nov 4, 2014 7:10:01 PM
  * Author:     piesbert
  *
  * Copyright (C) 2014 Sebastian Szymak
@@ -17,42 +17,31 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
  */
 
-#ifndef SRC_CORE_APPLICATION_H_
-#define SRC_CORE_APPLICATION_H_
-
-#include "service/interface/IConfig.h"
-#include "service/interface/ISdl.h"
-#include "opengl/interface/IWindow.h"
-#include "input/interface/IEventHandler.h"
-
-#include <memory>
+#include "Game.h"
 
 namespace ymine {
 namespace core {
 
-class Application {
-public:
-	Application();
-	virtual ~Application();
+Game::Game(std::shared_ptr<opengl::interface::IWindow> window, std::shared_ptr<input::interface::IEventHandler> eventHandler)
+: m_running(true) {
+    m_window = window;
+    m_eventHandler = eventHandler;
 
-	int main(int argc, char *argv[]);
+    m_eventHandler.get()->registerGame(this);
+}
 
-private:
-	std::unique_ptr<service::interface::IConfig> m_configImpl;
-	std::unique_ptr<service::interface::ISdl> m_sdlImpl;
+Game::~Game() {
+}
 
-	std::shared_ptr<opengl::interface::IWindow> m_window;
-	std::shared_ptr<input::interface::IEventHandler> m_eventHandler;
+void Game::start() {
+}
 
-	std::unique_ptr<core::interface::IGame> m_game;
-
-	void initServices();
-};
+void Game::quit() {
+    m_running = false;
+}
 
 } /* namespace core */
 } /* namespace ymine */
-
-#endif /* SRC_CORE_APPLICATION_H_ */

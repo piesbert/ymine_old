@@ -28,6 +28,8 @@
 #include "service/Sdl.h"
 
 #include "opengl/Window.h"
+#include "input/EventHandler.h"
+#include "core/Game.h"
 
 #include "log/Log.h"
 
@@ -35,9 +37,16 @@ namespace ymine {
 namespace core {
 
 Application::Application()
-: m_config (new service::ConfigImpl()),
-  m_sdl (new service::SdlImpl) {
+: m_configImpl(nullptr),
+  m_sdlImpl(nullptr),
+  m_window(nullptr),
+  m_eventHandler(nullptr) {
 	initServices();
+
+	m_window.reset(new opengl::Window());
+	m_eventHandler.reset(new input::EventHandler());
+
+	m_game.reset(new core::Game(m_window, m_eventHandler));
 }
 
 Application::~Application() {
@@ -48,8 +57,11 @@ int Application::main(int argc, char *argv[]) {
 }
 
 void Application::initServices() {
-	service::Config::instance().initServiceImpl(m_config.get());
-	service::Sdl::instance().initServiceImpl(m_sdl.get());
+    m_configImpl.reset(new service::ConfigImpl());
+    m_sdlImpl.reset(new service::SdlImpl());
+
+	service::Config::instance().initServiceImpl(m_configImpl.get());
+	service::Sdl::instance().initServiceImpl(m_sdlImpl.get());
 }
 
 } /* namespace core */
