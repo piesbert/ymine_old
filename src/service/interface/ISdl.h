@@ -52,6 +52,11 @@ struct ISdl {
     virtual int glSetSwapInterval(int interval) const = 0;
 
     virtual const char* getError() const = 0;
+
+    virtual void delay(Uint32 ms) const = 0;
+    virtual Uint32 getTicks() const = 0;
+
+    virtual int pollEvent(SDL_Event* event) const = 0;
 };
 
 } /* namespace interface */

@@ -25,6 +25,9 @@
 
 #include "input/interface/IEventHandler.h"
 #include "core/interface/IGame.h"
+#include "service/interface/ISdl.h"
+
+#include <SDL2/SDL.h>
 
 namespace ymine {
 namespace input {
@@ -38,7 +41,10 @@ public:
     void registerGame(ymine::core::interface::IGame *game);
 
 private:
+    service::interface::ISdl &m_sdl;
     core::interface::IGame *m_game;
+
+    SDL_Event m_event;
 };
 
 } /* namespace input */

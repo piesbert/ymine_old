@@ -27,8 +27,11 @@
 
 #include "opengl/interface/IWindow.h"
 #include "input/interface/IEventHandler.h"
+#include "service/interface/ISdl.h"
 
 #include <memory>
+
+const int MS_PER_UPDATE = 5;
 
 namespace ymine {
 namespace core {
@@ -42,10 +45,17 @@ public:
     void quit();
 
 private:
+    service::interface::ISdl &m_sdl;
+
     std::shared_ptr<opengl::interface::IWindow> m_window;
     std::shared_ptr<input::interface::IEventHandler> m_eventHandler;
 
     bool m_running;
+
+    int m_timePrevious;
+    int m_timeCurrent;
+    int m_timeElapsed;
+    int m_lag;
 };
 
 } /* namespace core */

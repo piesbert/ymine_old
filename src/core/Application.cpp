@@ -53,6 +53,7 @@ Application::~Application() {
 }
 
 int Application::main(int argc, char *argv[]) {
+    m_game.get()->start();
 	return 0;
 }
 

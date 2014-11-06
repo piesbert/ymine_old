@@ -75,5 +75,17 @@ const char *Sdl::getError() const {
     return m_impl->getError();
 }
 
+void Sdl::delay(Uint32 ms) const {
+    m_impl->delay(ms);
+}
+
+Uint32 Sdl::getTicks() const {
+    return m_impl->getTicks();
+}
+
+int Sdl::pollEvent(SDL_Event* event) const {
+    return m_impl->pollEvent(event);
+}
+
 } /* namespace service */
 } /* namespace ymine */

@@ -22,23 +22,35 @@
 
 #include "EventHandler.h"
 
+#include "service/Sdl.h"
+#include "log/Log.h"
+
 namespace ymine {
 namespace input {
 
 EventHandler::EventHandler()
-: m_game(nullptr) {
+: m_sdl(service::Sdl::instance()),
+  m_game(nullptr) {
 }
 
 EventHandler::~EventHandler() {
 }
 
 void EventHandler::processEvents() {
+    while (m_sdl.pollEvent(&m_event)) {
+        switch (m_event.type) {
+        case SDL_QUIT : {
+            LOGINF("SDL_QUIT event occurred.");
+            m_game->quit();
+            break;
+        }
+        }
+    }
 }
 
 void EventHandler::registerGame(core::interface::IGame *game) {
         m_game = game;
 }
-
 
 } /* namespace input */
 } /* namespace ymine */

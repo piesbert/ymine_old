@@ -22,11 +22,19 @@
 
 #include "Game.h"
 
+#include "service/Sdl.h"
+#include "log/Log.h"
+
 namespace ymine {
 namespace core {
 
 Game::Game(std::shared_ptr<opengl::interface::IWindow> window, std::shared_ptr<input::interface::IEventHandler> eventHandler)
-: m_running(true) {
+: m_sdl(service::Sdl::instance()),
+  m_running(true),
+  m_timePrevious(0),
+  m_timeCurrent(0),
+  m_timeElapsed(0),
+  m_lag(0) {
     m_window = window;
     m_eventHandler = eventHandler;
 
@@ -37,6 +45,25 @@ Game::~Game() {
 }
 
 void Game::start() {
+    m_timePrevious = m_sdl.getTicks();
+
+    while (m_running) {
+        m_timeCurrent = m_sdl.getTicks();
+        m_timeElapsed = m_timeCurrent - m_timePrevious;
+
+        m_timePrevious = m_timeCurrent;
+        m_lag += m_timeElapsed;
+
+        m_eventHandler.get()->processEvents();
+
+        while (m_lag >= MS_PER_UPDATE) {
+            // update();
+
+            m_lag -= MS_PER_UPDATE;
+        }
+
+        // render();
+    }
 }
 
 void Game::quit() {

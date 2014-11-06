@@ -104,7 +104,7 @@ void Window::checkColors() {
     m_sdl.glGetAttribute(SDL_GL_GREEN_SIZE, &m_green);
     m_sdl.glGetAttribute(SDL_GL_BLUE_SIZE, &m_blue);
 
-    LOGINF("RGB buffer size: " << m_red << "x" << m_green << "x" << m_blue);
+    LOGINF("RGB buffer size: " << m_red << "x" << m_green << "x" << m_blue << ".");
 }
 
 } /* namespace opengl */

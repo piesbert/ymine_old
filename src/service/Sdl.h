@@ -50,6 +50,11 @@ public:
     int glSetSwapInterval(int interval) const;
 
     const char* getError() const;
+
+    void delay(Uint32 ms) const;
+    Uint32 getTicks() const;
+
+    int pollEvent(SDL_Event* event) const;
 };
 
 } /* namespace service */
