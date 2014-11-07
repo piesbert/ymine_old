@@ -27,6 +27,8 @@
 #include "core/interface/IGame.h"
 #include "service/interface/ISdl.h"
 
+#include "input/Action.h"
+
 #include <SDL2/SDL.h>
 
 namespace ymine {
@@ -45,6 +47,13 @@ private:
     core::interface::IGame *m_game;
 
     SDL_Event m_event;
+
+    Action m_action[ActionId::ACTION_MAX];
+
+    void defaultConfig();
+
+    void handleEvent() const;
+    void runAction(ActionId, Action::State) const;
 };
 
 } /* namespace input */

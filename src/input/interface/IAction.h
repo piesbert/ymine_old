@@ -1,6 +1,6 @@
-/* File:       IEventHandler.h
+/* File:       IAction.h
  * Project:    ymine
- * Created on: Nov 4, 2014 5:06:14 PM
+ * Created on: Nov 7, 2014 5:34:58 PM
  * Author:     piesbert
  *
  * Copyright (C) 2014 Sebastian Szymak
@@ -20,36 +20,36 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
  */
 
-#ifndef SRC_INPUT_INTERFACE_IEVENTHANDLER_H_
-#define SRC_INPUT_INTERFACE_IEVENTHANDLER_H_
+#ifndef SRC_INPUT_INTERFACE_IACTION_H_
+#define SRC_INPUT_INTERFACE_IACTION_H_
 
-#include "core/interface/IGame.h"
+#include <SDL2/SDL.h>
 
 namespace ymine {
 namespace input {
 namespace interface {
 
-struct IEventHandler {
-    virtual ~IEventHandler() {}
+struct IAction {
+    virtual ~IAction() {}
 
-    enum ActionId : int {
-        ACTION_NOTHING = 0,
-        ACTION_FORWARD,
-        ACTION_BACKWARD,
-        ACTION_STRAFE_LEFT,
-        ACTION_STRAFE_RIGHT,
-        ACTION_JUMP,
-        ACTION_USE,
-        ACTION_QUIT,
-        ACTION_MAX
+    enum DeviceId : int {
+        DEVICE_UNKNOWN = 0,
+        DEVICE_KEYBOARD,
+        DEVICE_MOUSE
     };
 
-    virtual void processEvents() = 0;
-    virtual void registerGame(core::interface::IGame *game) = 0;
+    enum State : int {
+        STATE_UNKNOWN = 0,
+        STATE_PRESSED,
+        STATE_RELEASED
+    };
+
+    virtual State isValid(const SDL_Event &event) const = 0;
+    virtual void configure(DeviceId deviceId, int code) = 0;
 };
 
 } /* namespace interface */
 } /* namespace input */
 } /* namespace ymine */
 
-#endif /* SRC_INPUT_INTERFACE_IEVENTHANDLER_H_ */
+#endif /* SRC_INPUT_INTERFACE_IACTION_H_ */

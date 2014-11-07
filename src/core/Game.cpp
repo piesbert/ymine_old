@@ -62,6 +62,7 @@ void Game::start() {
             m_lag -= MS_PER_UPDATE;
         }
 
+        m_sdl.delay(10);
         // render();
     }
 }
