@@ -68,7 +68,6 @@ void EventHandler::processEvents() {
             else {
                 m_motionState.setPitch(m_event.motion.yrel);
                 m_motionState.setYaw(m_event.motion.xrel);
-                LOGINF(m_event.motion.yrel);
             }
             break;
         }
