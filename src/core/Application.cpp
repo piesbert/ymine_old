@@ -26,6 +26,8 @@
 #include "service/Config.h"
 #include "service/SdlImpl.h"
 #include "service/Sdl.h"
+#include "service/MotionStateImpl.h"
+#include "service/MotionState.h"
 
 #include "opengl/Window.h"
 #include "input/EventHandler.h"
@@ -60,9 +62,13 @@ int Application::main(int argc, char *argv[]) {
 void Application::initServices() {
     m_configImpl.reset(new service::ConfigImpl());
     m_sdlImpl.reset(new service::SdlImpl());
+    m_motionStateImpl.reset(new service::MotionStateImpl());
 
 	service::Config::instance().initServiceImpl(m_configImpl.get());
 	service::Sdl::instance().initServiceImpl(m_sdlImpl.get());
+	service::MotionState::instance().initServiceImpl(m_motionStateImpl.get());
+
+	LOGINF("Services initialization... done.");
 }
 
 } /* namespace core */

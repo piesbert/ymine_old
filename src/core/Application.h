@@ -25,6 +25,8 @@
 
 #include "service/interface/IConfig.h"
 #include "service/interface/ISdl.h"
+#include "service/interface/IMotionState.h"
+
 #include "opengl/interface/IWindow.h"
 #include "input/interface/IEventHandler.h"
 
@@ -43,6 +45,7 @@ public:
 private:
 	std::unique_ptr<service::interface::IConfig> m_configImpl;
 	std::unique_ptr<service::interface::ISdl> m_sdlImpl;
+	std::unique_ptr<service::interface::IMotionState> m_motionStateImpl;
 
 	std::shared_ptr<opengl::interface::IWindow> m_window;
 	std::shared_ptr<input::interface::IEventHandler> m_eventHandler;

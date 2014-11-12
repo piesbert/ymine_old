@@ -36,14 +36,14 @@ public:
 		return singleInstance;
 	}
 
-	virtual void initServiceImpl(T const *impl) final {
+	virtual void initServiceImpl(T *impl) final {
 		if (nullptr == m_impl) {
 			m_impl = impl;
 		}
 	}
 
 protected:
-	T const *m_impl;
+	T *m_impl;
 	inline explicit ServiceTemplate() : m_impl(nullptr) {}
 
 private:
