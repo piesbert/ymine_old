@@ -32,7 +32,8 @@ namespace input {
 EventHandler::EventHandler()
 : m_sdl(service::Sdl::instance()),
   m_motionState(service::MotionState::instance()),
-  m_game(nullptr) {
+  m_game(nullptr),
+  m_firstMouseResult(true) {
     defaultConfig();
 }
 
@@ -58,8 +59,17 @@ void EventHandler::processEvents() {
             break;
         }
         case SDL_MOUSEMOTION: {
-            m_motionState.setPitch(m_event.motion.yrel);
-            m_motionState.setYaw(m_event.motion.xrel);
+            /* First result for yaw/pitch is taken as relative to point (0, 0)
+             * so ignore this one.
+             */
+            if (m_firstMouseResult) {
+                m_firstMouseResult = false;
+            }
+            else {
+                m_motionState.setPitch(m_event.motion.yrel);
+                m_motionState.setYaw(m_event.motion.xrel);
+                LOGINF(m_event.motion.yrel);
+            }
             break;
         }
         }

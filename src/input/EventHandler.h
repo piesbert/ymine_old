@@ -53,6 +53,8 @@ private:
 
     SDL_Event m_event;
 
+    bool m_firstMouseResult;
+
     Action m_action[ActionId::ACTION_MAX];
 
     void defaultConfig();
