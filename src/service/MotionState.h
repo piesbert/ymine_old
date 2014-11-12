@@ -46,8 +46,11 @@ public:
     void setRight(bool right);
     bool getRight() const;
 
-    void setJumping(bool jumping);
-    bool getJumping() const;
+    void setJump(bool jump);
+    bool getJump() const;
+
+    void setUse(bool use);
+    bool getUse() const;
 
     void setPitch(float pitch);
     float getPitch() const;

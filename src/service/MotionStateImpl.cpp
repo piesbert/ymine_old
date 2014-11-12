@@ -30,7 +30,8 @@ MotionStateImpl::MotionStateImpl()
   m_backward(false),
   m_left(false),
   m_right(false),
-  m_jumping(false),
+  m_jump(false),
+  m_use(false),
   m_pitch(0.0f),
   m_yaw(0.0f) {
 }
@@ -70,12 +71,20 @@ bool MotionStateImpl::getRight() const {
     return m_right;
 }
 
-void MotionStateImpl::setJumping(bool jumping) {
-    m_jumping = jumping;
+void MotionStateImpl::setJump(bool jump) {
+    m_jump = jump;
 }
 
-bool MotionStateImpl::getJumping() const {
-    return m_jumping;
+bool MotionStateImpl::getJump() const {
+    return m_jump;
+}
+
+void MotionStateImpl::setUse(bool use) {
+    m_use = use;
+}
+
+bool MotionStateImpl::getUse() const {
+    return m_use;
 }
 
 void MotionStateImpl::setPitch(float pitch) {

@@ -42,8 +42,11 @@ struct IMotionState {
     virtual void setRight(bool right) = 0;
     virtual bool getRight() const = 0;
 
-    virtual void setJumping(bool jumping) = 0;
-    virtual bool getJumping() const = 0;
+    virtual void setJump(bool jump) = 0;
+    virtual bool getJump() const = 0;
+
+    virtual void setUse(bool use) = 0;
+    virtual bool getUse() const = 0;
 
     virtual void setPitch(float pitch) = 0;
     virtual float getPitch() const = 0;

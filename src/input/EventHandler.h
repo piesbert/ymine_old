@@ -26,6 +26,7 @@
 #include "input/interface/IEventHandler.h"
 #include "core/interface/IGame.h"
 #include "service/interface/ISdl.h"
+#include "service/interface/IMotionState.h"
 
 #include "input/Action.h"
 
@@ -46,6 +47,8 @@ public:
 
 private:
     service::interface::ISdl &m_sdl;
+    service::interface::IMotionState &m_motionState;
+
     core::interface::IGame *m_game;
 
     SDL_Event m_event;

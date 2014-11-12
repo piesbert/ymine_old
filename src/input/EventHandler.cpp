@@ -23,6 +23,7 @@
 #include "EventHandler.h"
 
 #include "service/Sdl.h"
+#include "service/MotionState.h"
 #include "log/Log.h"
 
 namespace ymine {
@@ -30,6 +31,7 @@ namespace input {
 
 EventHandler::EventHandler()
 : m_sdl(service::Sdl::instance()),
+  m_motionState(service::MotionState::instance()),
   m_game(nullptr) {
     defaultConfig();
 }
@@ -38,13 +40,28 @@ EventHandler::~EventHandler() {
 }
 
 void EventHandler::processEvents() {
+    m_motionState.setPitch(0.0f);
+    m_motionState.setYaw(0.0f);
+
     while (m_sdl.pollEvent(&m_event)) {
-        if (SDL_QUIT == m_event.type) {
+        switch (m_event.type) {
+        case SDL_QUIT: {
             LOGINF("SDL_QUIT event occurred.");
             m_game->quit();
+            break;
         }
-        else {
+        case SDL_KEYDOWN:
+        case SDL_KEYUP:
+        case SDL_MOUSEBUTTONDOWN:
+        case SDL_MOUSEBUTTONUP: {
             handleEvent();
+            break;
+        }
+        case SDL_MOUSEMOTION: {
+            m_motionState.setPitch(m_event.motion.yrel);
+            m_motionState.setYaw(m_event.motion.xrel);
+            break;
+        }
         }
     }
 }
@@ -85,24 +102,26 @@ void EventHandler::handleEvent() const {
 }
 
 void EventHandler::runAction(ActionId actionId, Action::State state) const {
+    bool currentState = (state == Action::State::STATE_PRESSED) ? true : false;
+
     switch (actionId) {
     case ActionId::ACTION_FORWARD:
-        LOGINF("FORWARD " << (state == Action::State::STATE_PRESSED ? "on" : "off"));
+        m_motionState.setForward(currentState);
         break;
     case ActionId::ACTION_BACKWARD:
-        LOGINF("BACKWARD " << (state == Action::State::STATE_PRESSED ? "on" : "off"));
+        m_motionState.setBackward(currentState);
         break;
     case ActionId::ACTION_STRAFE_LEFT:
-        LOGINF("STRAFE_LEFT " << (state == Action::State::STATE_PRESSED ? "on" : "off"));
+        m_motionState.setLeft(currentState);
         break;
     case ActionId::ACTION_STRAFE_RIGHT:
-        LOGINF("STRAFE_RIGHT " << (state == Action::State::STATE_PRESSED ? "on" : "off"));
+        m_motionState.setRight(currentState);
         break;
     case ActionId::ACTION_JUMP:
-        LOGINF("JUMP " << (state == Action::State::STATE_PRESSED ? "on" : "off"));
+        m_motionState.setJump(currentState);
         break;
     case ActionId::ACTION_USE:
-        LOGINF("USE " << (state == Action::State::STATE_PRESSED ? "on" : "off"));
+        m_motionState.setUse(currentState);
         break;
     case ActionId::ACTION_QUIT:
         m_game->quit();

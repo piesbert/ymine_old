@@ -45,8 +45,11 @@ public:
     void setRight(bool right);
     bool getRight() const;
 
-    void setJumping(bool jumping);
-    bool getJumping() const;
+    void setJump(bool jump);
+    bool getJump() const;
+
+    void setUse(bool use);
+    bool getUse() const;
 
     void setPitch(float pitch);
     float getPitch() const;
@@ -59,7 +62,8 @@ private:
     bool m_backward;
     bool m_left;
     bool m_right;
-    bool m_jumping;
+    bool m_jump;
+    bool m_use;
 
     float m_pitch;
     float m_yaw;

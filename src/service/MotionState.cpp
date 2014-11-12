@@ -63,12 +63,20 @@ bool MotionState::getRight() const {
     return m_impl->getRight();
 }
 
-void MotionState::setJumping(bool jumping) {
-    m_impl->setJumping(jumping);
+void MotionState::setJump(bool jump) {
+    m_impl->setJump(jump);
 }
 
-bool MotionState::getJumping() const {
-    return m_impl->getJumping();
+bool MotionState::getJump() const {
+    return m_impl->getJump();
+}
+
+void MotionState::setUse(bool use) {
+    m_impl->setUse(use);
+}
+
+bool MotionState::getUse() const {
+    return m_impl->getUse();
 }
 
 void MotionState::setPitch(float pitch) {
