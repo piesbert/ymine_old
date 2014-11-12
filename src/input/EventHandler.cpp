@@ -53,15 +53,20 @@ void EventHandler::registerGame(core::interface::IGame *game) {
         m_game = game;
 }
 
+void EventHandler::setAction(ActionId actionId, interface::IAction::DeviceId deviceId, int code) {
+    LOGINF("Action ID: " << actionId << ", Device ID: " << deviceId << ", Code: " << code);
+    m_action[actionId].configure(deviceId, code);
+}
+
 void EventHandler::defaultConfig() {
-        m_action[ActionId::ACTION_NOTHING]     .configure(Action::DeviceId::DEVICE_UNKNOWN,  0);
-        m_action[ActionId::ACTION_FORWARD]     .configure(Action::DeviceId::DEVICE_KEYBOARD, SDLK_w);
-        m_action[ActionId::ACTION_BACKWARD]    .configure(Action::DeviceId::DEVICE_KEYBOARD, SDLK_s);
-        m_action[ActionId::ACTION_STRAFE_LEFT] .configure(Action::DeviceId::DEVICE_KEYBOARD, SDLK_a);
-        m_action[ActionId::ACTION_STRAFE_RIGHT].configure(Action::DeviceId::DEVICE_KEYBOARD, SDLK_d);
-        m_action[ActionId::ACTION_JUMP]        .configure(Action::DeviceId::DEVICE_KEYBOARD, SDLK_SPACE);
-        m_action[ActionId::ACTION_USE]         .configure(Action::DeviceId::DEVICE_MOUSE,    SDL_BUTTON_LEFT);
-        m_action[ActionId::ACTION_QUIT]        .configure(Action::DeviceId::DEVICE_KEYBOARD, SDLK_ESCAPE);
+        setAction(ActionId::ACTION_NOTHING,     Action::DeviceId::DEVICE_UNKNOWN,  0);
+        setAction(ActionId::ACTION_FORWARD,     Action::DeviceId::DEVICE_KEYBOARD, SDLK_w);
+        setAction(ActionId::ACTION_BACKWARD,    Action::DeviceId::DEVICE_KEYBOARD, SDLK_s);
+        setAction(ActionId::ACTION_STRAFE_LEFT, Action::DeviceId::DEVICE_KEYBOARD, SDLK_a);
+        setAction(ActionId::ACTION_STRAFE_RIGHT,Action::DeviceId::DEVICE_KEYBOARD, SDLK_d);
+        setAction(ActionId::ACTION_JUMP,        Action::DeviceId::DEVICE_KEYBOARD, SDLK_SPACE);
+        setAction(ActionId::ACTION_USE,         Action::DeviceId::DEVICE_MOUSE,    SDL_BUTTON_LEFT);
+        setAction(ActionId::ACTION_QUIT,        Action::DeviceId::DEVICE_KEYBOARD, SDLK_ESCAPE);
 }
 
 void EventHandler::handleEvent() const {

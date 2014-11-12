@@ -24,6 +24,7 @@
 #define SRC_INPUT_INTERFACE_IEVENTHANDLER_H_
 
 #include "core/interface/IGame.h"
+#include "input/interface/IAction.h"
 
 namespace ymine {
 namespace input {
@@ -46,6 +47,8 @@ struct IEventHandler {
 
     virtual void processEvents() = 0;
     virtual void registerGame(core::interface::IGame *game) = 0;
+
+    virtual void setAction(ActionId actioId, IAction::DeviceId deviceId, int code) = 0;
 };
 
 } /* namespace interface */

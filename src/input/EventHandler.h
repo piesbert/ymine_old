@@ -42,6 +42,8 @@ public:
     void processEvents();
     void registerGame(ymine::core::interface::IGame *game);
 
+    void setAction(ActionId actioId, interface::IAction::DeviceId deviceId, int code);
+
 private:
     service::interface::ISdl &m_sdl;
     core::interface::IGame *m_game;
