@@ -46,6 +46,9 @@
     << ymine::log::Log::EIntModifier::LINE << __LINE__ \
     << L_MSG << ymine::log::Log::EType::END;
 
+#define LOGLUA(L_MSG) ymine::log::Log::instance() \
+    << L_MSG << ymine::log::Log::EType::END
+
 namespace ymine {
 namespace log {
 

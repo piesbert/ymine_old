@@ -23,13 +23,13 @@
 #ifndef SRC_SERVICE_CONFIG_H_
 #define SRC_SERVICE_CONFIG_H_
 
-#include "service/ServiceTemplate.h"
-#include "service/interface/IConfig.h"
+#include "ServiceTemplate.h"
+#include "interface/IConfig.h"
 
 namespace ymine {
 namespace service {
 
-class Config : public service::ServiceTemplate<Config, service::interface::IConfig> {
+class Config : public service::ServiceTemplate<Config, interface::IConfig> {
 public:
     Config();
     virtual ~Config();

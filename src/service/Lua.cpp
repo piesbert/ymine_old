@@ -1,6 +1,6 @@
-/* File:       MotionState.h
+/* File:       Lua.cpp
  * Project:    ymine
- * Created on: Nov 12, 2014 6:03:36 PM
+ * Created on: Nov 20, 2014 6:13:23 PM
  * Author:     piesbert
  *
  * Copyright (C) 2014 Sebastian Szymak
@@ -20,46 +20,28 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
  */
 
-#ifndef SRC_SERVICE_MOTIONSTATE_H_
-#define SRC_SERVICE_MOTIONSTATE_H_
-
-#include "ServiceTemplate.h"
-#include "interface/IMotionState.h"
+#include "Lua.h"
 
 namespace ymine {
 namespace service {
 
-class MotionState: public service::ServiceTemplate<MotionState, interface::IMotionState> {
-public:
-    MotionState();
-    virtual ~MotionState();
+Lua::Lua() {
+}
 
-    void setForward(bool forward);
-    bool getForward() const;
+Lua::~Lua() {
+}
 
-    void setBackward(bool backward);
-    bool getBackward() const;
+void Lua::init() {
+    m_impl->init();
+}
 
-    void setLeft(bool left);
-    bool getLeft() const;
+lua_State* Lua::getStack() {
+    return m_impl->getStack();
+}
 
-    void setRight(bool right);
-    bool getRight() const;
-
-    void setJump(bool jump);
-    bool getJump() const;
-
-    void setUse(bool use);
-    bool getUse() const;
-
-    void setPitch(float pitch);
-    float getPitch() const;
-
-    void setYaw(float yaw);
-    float getYaw() const;
-};
+bool Lua::loadScript(const std::string &path) {
+    return m_impl->loadScript(path);
+}
 
 } /* namespace service */
 } /* namespace ymine */
-
-#endif /* SRC_SERVICE_MOTIONSTATE_H_ */

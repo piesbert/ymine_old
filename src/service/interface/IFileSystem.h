@@ -1,6 +1,6 @@
-/* File:       MotionState.h
+/* File:       IFileSystem.h
  * Project:    ymine
- * Created on: Nov 12, 2014 6:03:36 PM
+ * Created on: Nov 20, 2014 5:22:00 PM
  * Author:     piesbert
  *
  * Copyright (C) 2014 Sebastian Szymak
@@ -20,46 +20,23 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
  */
 
-#ifndef SRC_SERVICE_MOTIONSTATE_H_
-#define SRC_SERVICE_MOTIONSTATE_H_
+#ifndef SRC_SERVICE_INTERFACE_IFILESYSTEM_H_
+#define SRC_SERVICE_INTERFACE_IFILESYSTEM_H_
 
-#include "ServiceTemplate.h"
-#include "interface/IMotionState.h"
+#include <string>
 
 namespace ymine {
 namespace service {
+namespace interface {
 
-class MotionState: public service::ServiceTemplate<MotionState, interface::IMotionState> {
-public:
-    MotionState();
-    virtual ~MotionState();
+struct IFileSystem {
+    virtual ~IFileSystem() {}
 
-    void setForward(bool forward);
-    bool getForward() const;
-
-    void setBackward(bool backward);
-    bool getBackward() const;
-
-    void setLeft(bool left);
-    bool getLeft() const;
-
-    void setRight(bool right);
-    bool getRight() const;
-
-    void setJump(bool jump);
-    bool getJump() const;
-
-    void setUse(bool use);
-    bool getUse() const;
-
-    void setPitch(float pitch);
-    float getPitch() const;
-
-    void setYaw(float yaw);
-    float getYaw() const;
+    virtual const std::string &getDirDelimiter() const = 0;
 };
 
+} /* namespace interface */
 } /* namespace service */
 } /* namespace ymine */
 
-#endif /* SRC_SERVICE_MOTIONSTATE_H_ */
+#endif /* SRC_SERVICE_INTERFACE_IFILESYSTEM_H_ */

@@ -23,7 +23,7 @@
 #ifndef SRC_SERVICE_SDLIMPL_H_
 #define SRC_SERVICE_SDLIMPL_H_
 
-#include "service/interface/ISdl.h"
+#include "interface/ISdl.h"
 
 namespace ymine {
 namespace service {

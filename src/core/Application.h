@@ -24,8 +24,10 @@
 #define SRC_CORE_APPLICATION_H_
 
 #include "service/interface/IConfig.h"
-#include "service/interface/ISdl.h"
+#include "service/interface/IFileSystem.h"
+#include "service/interface/ILua.h"
 #include "service/interface/IMotionState.h"
+#include "service/interface/ISdl.h"
 
 #include "opengl/interface/IWindow.h"
 #include "input/interface/IEventHandler.h"
@@ -44,8 +46,10 @@ public:
 
 private:
 	std::unique_ptr<service::interface::IConfig> m_configImpl;
-	std::unique_ptr<service::interface::ISdl> m_sdlImpl;
+	std::unique_ptr<service::interface::IFileSystem> m_fileSystemImpl;
+	std::unique_ptr<service::interface::ILua> m_luaImpl;
 	std::unique_ptr<service::interface::IMotionState> m_motionStateImpl;
+	std::unique_ptr<service::interface::ISdl> m_sdlImpl;
 
 	std::shared_ptr<opengl::interface::IWindow> m_window;
 	std::shared_ptr<input::interface::IEventHandler> m_eventHandler;

@@ -53,6 +53,7 @@ Log &Log::instance() {
     static Log instance;
     return instance;
 }
+
 Log &operator<<(Log &log, const Log::EType type) {
     switch (type) {
     case(Log::EType::ERR) : {

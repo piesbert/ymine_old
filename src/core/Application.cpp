@@ -24,10 +24,15 @@
 
 #include "service/ConfigImpl.h"
 #include "service/Config.h"
-#include "service/SdlImpl.h"
-#include "service/Sdl.h"
+#include "service/FileSystemImpl.h"
+#include "service/FileSystem.h"
+#include "service/LuaImpl.h"
+#include "service/Lua.h"
 #include "service/MotionStateImpl.h"
 #include "service/MotionState.h"
+#include "service/SdlImpl.h"
+#include "service/Sdl.h"
+
 
 #include "opengl/Window.h"
 #include "input/EventHandler.h"
@@ -38,11 +43,7 @@
 namespace ymine {
 namespace core {
 
-Application::Application()
-: m_configImpl(nullptr),
-  m_sdlImpl(nullptr),
-  m_window(nullptr),
-  m_eventHandler(nullptr) {
+Application::Application() {
 	initServices();
 
 	m_window.reset(new opengl::Window());
@@ -61,14 +62,23 @@ int Application::main(int argc, char *argv[]) {
 
 void Application::initServices() {
     m_configImpl.reset(new service::ConfigImpl());
-    m_sdlImpl.reset(new service::SdlImpl());
+    service::Config::instance().initServiceImpl(m_configImpl.get());
+
+    m_fileSystemImpl.reset(new service::FileSystemImpl());
+    service::FileSystem::instance().initServiceImpl(m_fileSystemImpl.get());
+
+    m_luaImpl.reset(new service::LuaImpl());
+    service::Lua::instance().initServiceImpl(m_luaImpl.get());
+
     m_motionStateImpl.reset(new service::MotionStateImpl());
+    service::MotionState::instance().initServiceImpl(m_motionStateImpl.get());
 
-	service::Config::instance().initServiceImpl(m_configImpl.get());
-	service::Sdl::instance().initServiceImpl(m_sdlImpl.get());
-	service::MotionState::instance().initServiceImpl(m_motionStateImpl.get());
+    m_sdlImpl.reset(new service::SdlImpl());
+    service::Sdl::instance().initServiceImpl(m_sdlImpl.get());
 
-	LOGINF("Services initialization... done.");
+    LOGINF("Services initialization... done.");
+
+    service::Lua::instance().init();
 }
 
 } /* namespace core */
