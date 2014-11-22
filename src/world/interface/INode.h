@@ -45,17 +45,13 @@ struct INode : public ISerializable {
         LIQUID
     };
 
-    virtual void setName(const std::string &name) = 0;
+    virtual void create() = 0;
+
     virtual std::string &getName() = 0;
 
-    virtual void setType(Type type) = 0;
     virtual Type getType() = 0;
-
-    virtual void setDiggable(bool diggable) = 0;
     virtual bool getDiggable() = 0;
-
-    virtual void setHitPoints(int hitPoints) = 0;
-    virtual int getHitPoints() = 0;
+    virtual int  getInitialHP() = 0;
 };
 
 } /* namespace interface */

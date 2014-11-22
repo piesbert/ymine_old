@@ -36,23 +36,24 @@ public:
     void serialize(std::ostream &os, unsigned int protocolVersion);
     void deSerialize(std::istream &is);
 
-    void setName(const std::string &name);
+    void create();
+
     std::string &getName();
 
-    void setType(Type type);
     Type getType();
-
-    void setDiggable(bool diggable);
     bool getDiggable();
-
-    void setHitPoints(int hitPoints);
-    int getHitPoints();
+    int  getInitialHP();
 
 private:
     std::string     m_name;
     Type            m_type;
     bool            m_diggable;
     unsigned int    m_hitPoints;
+
+    void setName(const std::string &name);
+    void setType(Type type);
+    void setDiggable(bool diggable);
+    void setInitialHP(int hitPoints);
 };
 
 } /* namespace world */

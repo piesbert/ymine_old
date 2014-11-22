@@ -35,5 +35,13 @@ const std::string &FileSystem::getDirDelimiter() const {
     return m_impl->getDirDelimiter();
 }
 
+const std::string &FileSystem::getGameDir() const {
+    return m_impl->getGameDir();
+}
+
+const std::string &FileSystem::getUserDir() const {
+    return m_impl->getUserDir();
+}
+
 } /* namespace service */
 } /* namespace ymine */

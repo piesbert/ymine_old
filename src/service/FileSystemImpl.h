@@ -34,6 +34,9 @@ public:
     virtual ~FileSystemImpl();
 
     const std::string &getDirDelimiter() const;
+
+    const std::string &getGameDir() const;
+    const std::string &getUserDir() const;
 };
 
 } /* namespace service */

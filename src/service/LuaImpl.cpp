@@ -58,6 +58,12 @@ void LuaImpl::init() {
     lua_pushstring(m_luaStack, FileSystem::instance().getDirDelimiter().c_str());
     lua_setglobal(m_luaStack, "DIR_DELIMITER");
 
+    lua_pushfstring(m_luaStack, FileSystem::instance().getGameDir().c_str());
+    lua_setglobal(m_luaStack, "GAME_DIR");
+
+    lua_pushfstring(m_luaStack, FileSystem::instance().getUserDir().c_str());
+    lua_setglobal(m_luaStack, "USER_DIR");
+
     LOGINF("Lua initialization... done");
 }
 

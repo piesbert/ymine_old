@@ -40,19 +40,30 @@ void Node::serialize(std::ostream &os, unsigned int protocolVersion) {
 void Node::deSerialize(std::istream &is) {
 }
 
-void Node::setName(const std::string &name) {
-    m_name = name;
+void Node::create() {
+
 }
 
 std::string &Node::getName() {
     return m_name;
 }
 
-void Node::setType(Type type) {
-    m_type = type;
-}
 Node::Type Node::getType() {
     return m_type;
+}
+
+bool Node::getDiggable() {
+    return m_diggable;
+}
+
+int Node::getInitialHP() {
+    int retval = 1;
+
+    if (m_type < NON_DIGABBLE) {
+        retval = m_hitPoints;
+    }
+
+    return retval;
 }
 
 void Node::setDiggable(bool diggable) {
@@ -63,22 +74,16 @@ void Node::setDiggable(bool diggable) {
     }
 }
 
-bool Node::getDiggable() {
-    return m_diggable;
+void Node::setName(const std::string &name) {
+    m_name = name;
 }
 
-void Node::setHitPoints(int hitPoints) {
+void Node::setType(Type type) {
+    m_type = type;
+}
+
+void Node::setInitialHP(int hitPoints) {
     m_hitPoints = hitPoints;
-}
-
-int Node::getHitPoints() {
-    int retval = 1;
-
-    if (m_type < NON_DIGABBLE) {
-        retval = m_hitPoints;
-    }
-
-    return retval;
 }
 
 } /* namespace world */

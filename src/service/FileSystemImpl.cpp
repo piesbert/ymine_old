@@ -28,6 +28,9 @@ const std::string DIR_DELIMITER  = "\\";
 const std::string DIR_DELIMITER = "/";
 #endif
 
+const std::string GAME_DIR  = "/home/piesbert/devel/eclipse/ymine";
+const std::string USER_DIR  = "/home/piesbert/.ymine";
+
 namespace ymine {
 namespace service {
 
@@ -39,6 +42,14 @@ FileSystemImpl::~FileSystemImpl() {
 
 const std::string &FileSystemImpl::getDirDelimiter() const {
     return DIR_DELIMITER;
+}
+
+const std::string &FileSystemImpl::getGameDir() const {
+    return GAME_DIR;
+}
+
+const std::string &FileSystemImpl::getUserDir() const {
+    return USER_DIR;
 }
 
 } /* namespace service */

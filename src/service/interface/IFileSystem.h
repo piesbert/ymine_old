@@ -33,6 +33,9 @@ struct IFileSystem {
     virtual ~IFileSystem() {}
 
     virtual const std::string &getDirDelimiter() const = 0;
+
+    virtual const std::string &getGameDir() const = 0;
+    virtual const std::string &getUserDir() const = 0;
 };
 
 } /* namespace interface */
