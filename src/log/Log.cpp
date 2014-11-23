@@ -70,6 +70,10 @@ Log &operator<<(Log &log, const Log::EType type) {
         log.m_file << "INF ";
         break;
     }
+    case(Log::EType::LUA) : {
+        log.m_file << "LUA ";
+        break;
+    }
     case(Log::EType::END) : {
         log.m_file << std::endl;
         break;

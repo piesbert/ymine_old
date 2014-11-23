@@ -55,14 +55,8 @@ void LuaImpl::init() {
     lua_newtable(m_luaStack);
     lua_setglobal(m_luaStack, "World");
 
-    lua_pushstring(m_luaStack, FileSystem::instance().getDirDelimiter().c_str());
-    lua_setglobal(m_luaStack, "DIR_DELIMITER");
-
-    lua_pushfstring(m_luaStack, FileSystem::instance().getGameDir().c_str());
-    lua_setglobal(m_luaStack, "GAME_DIR");
-
-    lua_pushfstring(m_luaStack, FileSystem::instance().getUserDir().c_str());
-    lua_setglobal(m_luaStack, "USER_DIR");
+    setGlobalVariables();
+    setGlobalFunctions();
 
     LOGINF("Lua initialization... done");
 }
@@ -92,6 +86,22 @@ bool LuaImpl::loadScript(const std::string &path) {
     return retval;
 }
 
+void LuaImpl::setGlobalVariables() {
+    lua_pushstring(m_luaStack, FileSystem::instance().getDirDelimiter().c_str());
+    lua_setglobal(m_luaStack, "DIR_DELIMITER");
+
+    lua_pushfstring(m_luaStack, FileSystem::instance().getGameDir().c_str());
+    lua_setglobal(m_luaStack, "GAME_DIR");
+
+    lua_pushfstring(m_luaStack, FileSystem::instance().getUserDir().c_str());
+    lua_setglobal(m_luaStack, "USER_DIR");
+}
+
+void LuaImpl::setGlobalFunctions() {
+    lua_pushcfunction(m_luaStack, log);
+    lua_setglobal(m_luaStack, "ymineLog");
+}
+
 int LuaImpl::errorHandler(lua_State *L) {
     bool done = false;
 
@@ -117,6 +127,18 @@ int LuaImpl::errorHandler(lua_State *L) {
     }
 
     return 1;
+}
+
+int LuaImpl::log(lua_State *L) {
+    const char* message = lua_tostring(L, 1);
+
+    lua_Debug debug;
+    lua_getstack(L, 1, &debug);
+    lua_getinfo(L, "Sl", &debug);
+
+    LOGLUA(SHORT_FILE_NAME(debug.short_src) << "(" << debug.currentline << "): " << message);
+
+    return 0;
 }
 
 } /* namespace service */

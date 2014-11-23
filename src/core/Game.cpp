@@ -22,7 +22,10 @@
 
 #include "Game.h"
 
+#include "service/Lua.h"
 #include "service/Sdl.h"
+#include "service/FileSystem.h"
+
 #include "log/Log.h"
 
 namespace ymine {
@@ -35,6 +38,11 @@ Game::Game(std::shared_ptr<opengl::interface::IWindow> window, std::shared_ptr<i
   m_timeCurrent(0),
   m_timeElapsed(0),
   m_lag(0) {
+
+    /* Run initial lua scripts.
+     */
+    service::Lua::instance().loadScript(service::FileSystem::instance().getGameDir() + "/script/Init.lua");
+
     m_window = window;
     m_eventHandler = eventHandler;
 

@@ -26,27 +26,28 @@
 #include <fstream>
 #include <string.h>
 
-#define SHORT_FILE_NAME (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+#define SHORT_FILE_NAME(FILE) (strrchr(FILE, '/') ? strrchr(FILE, '/') + 1 : FILE)
 
 #define LOGERR(L_MSG) ymine::log::Log::instance() \
     << ymine::log::Log::EType::ERR \
-    << SHORT_FILE_NAME \
+    << SHORT_FILE_NAME(__FILE__) \
     << ymine::log::Log::EIntModifier::LINE << __LINE__ \
     << L_MSG << ymine::log::Log::EType::END;
 
 #define LOGWRN(L_MSG) ymine::log::Log::instance() \
     << ymine::log::Log::EType::WRN \
-    << SHORT_FILE_NAME \
+    << SHORT_FILE_NAME(__FILE__) \
     << ymine::log::Log::EIntModifier::LINE << __LINE__ \
     << L_MSG << ymine::log::Log::EType::END;
 
 #define LOGINF(L_MSG) ymine::log::Log::instance() \
     << ymine::log::Log::EType::INF \
-    << SHORT_FILE_NAME \
+    << SHORT_FILE_NAME(__FILE__) \
     << ymine::log::Log::EIntModifier::LINE << __LINE__ \
     << L_MSG << ymine::log::Log::EType::END;
 
 #define LOGLUA(L_MSG) ymine::log::Log::instance() \
+    << ymine::log::Log::EType::LUA \
     << L_MSG << ymine::log::Log::EType::END
 
 namespace ymine {
@@ -57,7 +58,7 @@ public:
     static Log &instance();
     virtual ~Log();
 
-    enum class EType {ERR, WRN, INF, END};
+    enum class EType {ERR, WRN, INF, LUA, END};
     enum class EIntModifier {INT, LINE};
 
     friend Log &operator<<(Log &log, const EType type);

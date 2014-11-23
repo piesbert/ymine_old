@@ -45,7 +45,11 @@ private:
 
     int m_errorHandler;
 
+    void setGlobalVariables();
+    void setGlobalFunctions();
+
     static int errorHandler(lua_State *L);
+    static int log(lua_State *L);
 };
 
 } /* namespace service */
