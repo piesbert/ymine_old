@@ -77,7 +77,7 @@ bool LuaImpl::loadScript(const std::string &path) {
     if (status) {
         LOGWRN("In Lua script: " << path);
         LOGERR("Error raport : BEGIN");
-        LOGLUA(lua_tostring(L, -1));
+        LOGDEF(lua_tostring(L, -1));
         LOGERR("Error raport : END");
         lua_pop(L, 1); // Pop error message from stack
         retval = false;

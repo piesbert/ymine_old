@@ -21,10 +21,11 @@
 --
 
 World.registeredNodes = {}
+World.registeredAliases = {}
 
 local aliasMetatable = {
     __index = function(t, name)
-        return rawget(t, core.registered_aliases[name])
+        return rawget(t, World.registeredAliases[name])
     end
 }
 

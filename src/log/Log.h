@@ -50,6 +50,9 @@
     << ymine::log::Log::EType::LUA \
     << L_MSG << ymine::log::Log::EType::END
 
+#define LOGDEF(L_MSG) ymine::log::Log::instance() \
+    << L_MSG << ymine::log::Log::EType::END
+
 namespace ymine {
 namespace log {
 

@@ -42,8 +42,8 @@ Log::~Log() {
     if (m_file.is_open()) {
         m_file << std::endl;
 
-        m_file << m_warningCounter << " warnings." << std::endl;
-        m_file << m_errorCounter << " errors." << std::endl;
+        m_file << m_warningCounter << ((1 == m_warningCounter) ? " warning." : " warnings.") << std::endl;
+        m_file << m_errorCounter << ((1 == m_errorCounter) ? " error." : " errors.") << std::endl;
 
         m_file.close();
     }
