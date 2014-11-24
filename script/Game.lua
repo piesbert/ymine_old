@@ -1,4 +1,4 @@
--- File:       Init.lua
+-- File:       Game.lua
 -- Project:    ymine
 -- Created on: Nov 19, 2014 22:58:34 AM
 -- Author:     piesbert
@@ -20,26 +20,26 @@
 -- 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.    
 --
 
-World.registeredNodes = {}
-World.registeredAliases = {}
+Game.registeredNodes = {}
+Game.registeredAliases = {}
 
 local aliasMetatable = {
     __index = function(t, name)
-        return rawget(t, World.registeredAliases[name])
+        return rawget(t, Game.registeredAliases[name])
     end
 }
 
-setmetatable(World.registeredNodes, aliasMetatable)
-ymineLog("Creating World metatables... done")
+setmetatable(Game.registeredNodes, aliasMetatable)
+ymineLog("Creating Game metatables... done")
 
-function World.registerObject(name, object)
+function Game.registerObject(name, object)
     if ("node" == object.type) then
-        setmetatable(object, {__index = World.registeredNodes})
-        World.registeredNodes[object.name] = object
+        setmetatable(object, {__index = Game.registeredNodes})
+        Game.registeredNodes[object.name] = object
     end
 end
 
-function World.registerNode(name, node)
+function Game.registerNode(name, node)
     node.type = "node"
-    World.registerObject(node)
+    Game.registerObject(node)
 end

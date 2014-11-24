@@ -23,7 +23,7 @@
 scriptPath = GAME_DIR..DIR_DELIMITER.."script"..DIR_DELIMITER
 
 local scripts = {
-    "World.lua"
+    "Game.lua"
 }
 
 for key, value in pairs(scripts) do

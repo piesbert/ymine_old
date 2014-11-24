@@ -53,7 +53,7 @@ void LuaImpl::init() {
     m_errorHandler = lua_gettop(m_luaStack);
 
     lua_newtable(m_luaStack);
-    lua_setglobal(m_luaStack, "World");
+    lua_setglobal(m_luaStack, "Game");
 
     setGlobalVariables();
     setGlobalFunctions();
