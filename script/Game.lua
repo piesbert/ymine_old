@@ -30,7 +30,7 @@ local aliasMetatable = {
 }
 
 setmetatable(Game.registeredNodes, aliasMetatable)
-ymineLog("Creating Game metatables... done")
+Game.log("Creating Game metatables... done")
 
 function Game.registerObject(name, object)
     if ("node" == object.type) then

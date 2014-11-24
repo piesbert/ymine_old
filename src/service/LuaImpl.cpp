@@ -98,8 +98,13 @@ void LuaImpl::setGlobalVariables() {
 }
 
 void LuaImpl::setGlobalFunctions() {
+    lua_getfield(m_luaStack, LUA_GLOBALSINDEX, "Game");
+
+    lua_pushstring(m_luaStack, "log");
     lua_pushcfunction(m_luaStack, log);
-    lua_setglobal(m_luaStack, "ymineLog");
+
+    lua_settable(m_luaStack, -3);
+    lua_pop(m_luaStack, 1);
 }
 
 int LuaImpl::errorHandler(lua_State *L) {

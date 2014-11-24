@@ -27,6 +27,6 @@ local scripts = {
 }
 
 for key, value in pairs(scripts) do
-    ymineLog("Running: "..value)
+    Game.log("Running: "..value)
     dofile(scriptPath..value)
 end
